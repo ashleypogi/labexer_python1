@@ -1,0 +1,41 @@
+def display_question(question, choices):
+    print(question)
+    for i, choice in enumerate(choices):
+        print(f"{chr(97+i)}. {choice}")
+
+
+def get_user_input(question, choices):
+    while True:
+        display_question(question, choices)
+        user_input = input("Enter your choice (a/b/c/d...): ")
+        if user_input.lower() in [chr(97+i) for i in range(len(choices))]:
+            return user_input.lower()
+
+
+# Read user input
+name = input("Enter your name: ")
+gender = input("Enter your gender: ")
+age = input("Enter your age: ")
+
+# Display user input
+print("User information:")
+print(f"Name: {name}")
+print(f"Gender: {gender}")
+print(f"Age: {age}")
+
+# Ask additional questions
+is_student = get_user_input("Are you a student? Choices: Yes or No", ["Yes", "No"])
+status_choices = ["Single", "Taken", "Married", "Widowed", "Separated", "Heartbroken", "Prefer not to Say"]
+status = get_user_input("What is your status? Choices: Single/Taken/Married/Widowed/Separated/Heartbroken/Prefer not to Say", status_choices)
+experienced_python = get_user_input("Have you ever experienced 'Python Programming'? Choices: Yes or No", ["Yes", "No"])
+
+# Display additional information
+print("Additional information:")
+print(f"Student: {is_student}")
+print(f"Status: {status_choices[ord(status) - 97]}")
+print(f"Experienced Python: {experienced_python}")
+
+# Additional comment
+print("\nThis program prompts the user to enter their name, gender, and age. Then, it displays the user input.")
+print("Afterward, it asks additional questions with multiple-choice options and validates the user's input.")
+print("Finally, it displays the additional information provided by the user.")
